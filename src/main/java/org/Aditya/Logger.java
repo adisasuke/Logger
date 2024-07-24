@@ -6,6 +6,7 @@ public class Logger implements Cloneable, Serializable {
 
     private static volatile Logger logger;
     private static AbstractLogger abstractLogger;
+    private static LoggerSubject loggerSubject;
 
     public void setLoggerlevel(int loggerlevel) {
         this.loggerlevel = loggerlevel;
@@ -33,6 +34,7 @@ public class Logger implements Cloneable, Serializable {
                 {
                     logger = new Logger();
                     abstractLogger = LoggerManager.getLogger();
+                    loggerSubject = LoggerManager.getLoggerSubject();
                 }
             }
 
@@ -59,7 +61,7 @@ public class Logger implements Cloneable, Serializable {
 
     public void createLogger(int level, String msg)
     {
-        abstractLogger.logMessge(level, msg, loggerlevel);
+        abstractLogger.logMessge(level, msg, loggerlevel, loggerSubject);
     }
 
 }

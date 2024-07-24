@@ -15,4 +15,18 @@ public class LoggerManager {
 
         return infoLogger;
     }
+
+    public static LoggerSubject getLoggerSubject()
+    {
+        LoggerObserver fileObserver = new FileLogger();
+        LoggerObserver consoleObserver = new ConsoleLogger();
+        LoggerSubject subject = new LoggerSubject();
+        subject.addObserver(1,fileObserver);
+        subject.addObserver(1,consoleObserver);
+        subject.addObserver(2,consoleObserver);
+        subject.addObserver(3,consoleObserver);
+        return subject;
+    }
+
+
 }

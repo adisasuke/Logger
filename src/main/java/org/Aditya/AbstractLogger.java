@@ -9,20 +9,20 @@ public abstract class AbstractLogger {
         this.nextLogger = nextLogger;
     }
 
-    public void logMessge(int level, String message, int loggerLevel)
+    public void logMessge(int level, String message, int loggerLevel, LoggerSubject loggerSubject)
     {
         if(level == this.level && loggerLevel>=this.level)
         {
-            display(message);
+            display(message, loggerSubject);
         }
 
         if(nextLogger != null)
         {
-            nextLogger.logMessge(level, message, loggerLevel);
+            nextLogger.logMessge(level, message, loggerLevel, loggerSubject);
         }
 
     }
 
 
-    protected abstract void display(String msg);
+    protected abstract void display(String msg, LoggerSubject loggerSubject);
 }

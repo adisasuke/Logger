@@ -10,7 +10,8 @@ public class ErrorLogger extends  AbstractLogger{
 
 
     @Override
-    protected void display(String msg) {
-        System.out.println("Error : " + msg);
+    protected void display(String msg, LoggerSubject loggerSubject) {
+        String message = "Error : " + msg;
+        loggerSubject.log(2, message);
     }
 }

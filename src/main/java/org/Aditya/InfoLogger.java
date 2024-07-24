@@ -8,7 +8,8 @@ public class InfoLogger extends AbstractLogger {
     }
 
     @Override
-    protected void display(String msg) {
-        System.out.println("Info : " + msg);
+    protected void display(String msg, LoggerSubject loggerSubject) {
+        String message = "Info : " + msg;
+        loggerSubject.log(1, message);
     }
 }
